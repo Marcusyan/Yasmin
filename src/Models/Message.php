@@ -445,8 +445,8 @@ class Message extends ClientBase {
      * @return \React\Promise\ExtendedPromiseInterface
      * @see \CharlotteDunois\Yasmin\Traits\TextChannelTrait::send()
      */
-    function reply(string $content, array $options = array()) {
-        return $this->channel->send($this->author->__toString().self::$replySeparator.$content, $options);
+    function reply(string $content, array $options = array(), $author = true) {
+        return $this->channel->send(($author ? $this->author->__toString() : '').self::$replySeparator.$content, $options);
     }
     
     /**
